@@ -1,0 +1,16 @@
+<?php
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AppointmentController;
+
+Route::get('/user', function (Request $request) {
+    return $request->user();
+})->middleware('auth:sanctum');
+
+
+
+Route::post('/appointments', [AppointmentController::class, 'store'])->middleware('verify.apikey');
+Route::get('/test', function () {
+    return "hi";
+});
